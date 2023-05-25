@@ -1,7 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-class Login:
+
+class LoginPage:
 
     textbox_username_id = "Email"
     textbox_password = "Password"
