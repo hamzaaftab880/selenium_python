@@ -9,16 +9,26 @@ class Test_001_Login:
     username = "admin@yourstore.com"
     password = "admin"
 
-    def test_homepage_title(self):
-        self.driver = webdriver.Chrome(executable_path= "D:\selenium_python\webdrivers/chromedriver.exe")
+    def test_homepage_title(self, setup):
+        self.driver = setup
         self.driver.get(self.base_url)
         actual_title = self.driver.title
         self.driver.close()
-        if actual_title == "Your store. Login"
+        if actual_title == "Your store. Login":
             assert True
         else:
             assert False
-    def test_login(self):
 
-        self.driver = webdriver.Chrome(executable_path="D:\selenium_python\webdrivers/chromedriver.exe")
+    def test_login(self, setup):
+
+        self.driver = setup
         self.driver.get(self.base_url)
+        self.lp = LoginPage(self.driver)
+        self.lp.setusername(self.username)
+        self.lp.setpassword(self.password)
+        self.lp.clicklogin()
+        act_title  = self.driver.title
+        if act_title == "Dashboard / nopCommerce administration":
+            assert True
+        else
+            assert False
